@@ -1,40 +1,53 @@
 <div class="row">
-<div class="col-md-4-off-md-2">
-  <div class="card">
-    <div class="card-body">
-      <form action="">
-        <div class="from-group">
-        <!--  <input type="text" name="customerName" [(ngModel)]="pedido.customerName" class="form-control" autofocus>   -->
-       <p>Cliente:</p>
-          <input type="text" name="customerName" [(ngModel)]="pedido.customerName" placeholder="customerName" class="form-control">      
+  <div class="col-md-4-off-md-0">
+    <div class="card">
+      <div class="card-body">
+        <form action="">
+          <div class="from-group">
+          <!--  <input type="text" name="customerName" [(ngModel)]="pedido.customerName" class="form-control" autofocus>   -->
+        <p>Cliente:</p>
+            <input type="text" name="customerName" [(ngModel)]="pedido.customerName" placeholder="customerName" class="form-control">      
 
-        </div><br>
-        <div class="from-Detail">
-            <p>Detalle:</p><br>
-            <div class="detail">
-                        
-                <p>producto:pizza 1</p>
-                <p>Precio 10.5</p>
-            <div class="col-md-4" [(ngModel)]="pedido.lineas" *ngFor="let linea of lineas">
-                <div class="card-body">     
-                    <p> Producto:
-                        {{linea.product}}
-                    </p>
-                  </div>                      
-                  <input type="text" [(ngModel)]="pedido.lineas">                                   
-          </div> <br>
-          </div>
-          <div class="custom-control custom-checkbox">
+          </div><br>
+          <div class="from-Detail">
+            <div class="custom-control custom-checkbox">
               <input type="checkbox" [checked]="pedido.status ===2" (click)="cambiarEstado()" class="custom-control-input" id="customCheck1" autofocus>
               <label class="custom-control-label" for="customCheck1">Marcar como entregado</label>
             </div>
-          </div>  <br>
-          <button class="btn btn-sucess btn-block btn-info" (click)="updatePedido()">
-              Guardar
-          </button>
-      </form>
+            </div>  <br>
+            <button class="btn btn-sucess btn-block btn-info" (click)="updatePedido()">
+                Despachar
+            </button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
+  <div class="col-md-8-off-md-0">
+    <div class="card">
+      <div class="card-body">
+        <table>
+            <thead>
+              <th>Item</th>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Finished</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let line of pedido.lines; let i = index">
+                <td style="padding-right: 4rem">{{i + 1}}</td>
+                <td style="padding-right: 4rem">{{line.product.name}}</td>
+                <td style="padding-right: 4rem">{{line.quantity}}</td>
+                <td style="padding-right: 4rem">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="{'customCheck' + index}">
+                    <label class="custom-control-label" for="{'customCheck' + index}"></label>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
