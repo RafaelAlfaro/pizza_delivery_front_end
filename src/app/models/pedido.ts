@@ -1,6 +1,6 @@
 export interface Pedido {
     orderId?: string;
-    orderStatus?: number;
+    orderStatus?: string;
     statusDescription?: String;
     items?: any;
     creationDateTime?: any;

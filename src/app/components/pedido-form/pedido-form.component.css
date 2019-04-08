@@ -1,0 +1,12 @@
+.table-small {
+    width: 100%;
+}
+
+.table-small th{
+    background-color: #f7f7f9;
+}
+
+.table-small th,
+.table-small td {
+    padding: 1rem;
+}

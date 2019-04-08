@@ -11,13 +11,15 @@ import { PedidosService } from '../../services/pedidos.service';
 export class PedidoFormComponent implements OnInit {
   @HostBinding('class') classes = 'row';
   public pedido: Pedido = {
-    orderId: '0',
-    orderStatus: 0,
-    statusDescription: 'Pedro',
+    orderId: '',
+    orderStatus: '',
+    statusDescription: '',
     items: [],
     creationDateTime: 1,
     restaurantCode: 1
   }
+
+  public disableControl: boolean;
   constructor(private pedidoService: PedidosService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -25,29 +27,18 @@ export class PedidoFormComponent implements OnInit {
     this.pedidoService.getPedido(params.orderId)
       .subscribe(
         res => {
-          console.log(res);
           this.pedido = res;
-          console.log(this.pedido);
+          this.disableControl = this.pedido.orderStatus === 'Delivered';
         },
         err => console.error(err)
       )
   }
-  cambiarEstado() {
-    if (this.pedido.orderStatus == 1) {
-      this.pedido.orderStatus = 2;
-    }
-    else {
-      this.pedido.orderStatus = 1;
-    }
-  }
-  updatePedido() {
-    // this.pedido.status=2;
-    //   console.log(this.pedido);
 
+  updatePedido() {
+    this.pedido.orderStatus = 'Delivered';
     this.pedidoService.updatePedido(this.pedido.orderId, this.pedido)
       .subscribe(
         res => {
-          console.log(res);
           this.router.navigate(['/pedidos']);
         },
         err => console.error(err)
