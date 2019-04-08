@@ -1,14 +1,16 @@
 export interface Pedido {
-    id?: string;
-    customerId?: number;
-    customerName?: String;
-    lines?: any;
-    status?: number;
-    userId?: number;
+    orderId?: string;
+    orderStatus?: number;
+    statusDescription?: String;
+    items?: any;
+    creationDateTime?: any;
+    restaurantCode?: any;
+    restaurantName?: String;
 }
-export interface Linea{
-    productId: number;
-    product:Producto;
+export interface items{
+    itemCode: String;
+    description:Producto;
+    quantity: String;
 }
 export interface Producto{
     id: number;

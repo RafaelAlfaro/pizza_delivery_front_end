@@ -15,7 +15,11 @@ const routes: Routes = [
   {
     path:'pedidos/edit/:id',
     component: PedidoFormComponent
-  }
+  },
+  {
+    path:'pedidosEntregados',
+    component: PedidoListComponent
+  },   
 ];
 
 @NgModule({

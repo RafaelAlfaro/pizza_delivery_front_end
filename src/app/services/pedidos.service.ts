@@ -7,10 +7,10 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class PedidosService {
-  API_URL= 'https://group4api.azurewebsites.net/api';
+  API_URL= 'https://g1containerorderservice.azurewebsites.net/api';
   constructor(private http: HttpClient) { }
   getPedidos(){
-    return this.http.get(`${this.API_URL}/Order`);
+    return this.http.get(`${this.API_URL}/orders`);
   }
   getPedido(id:string){
     return this.http.get(`${this.API_URL}/Order/${id}`);

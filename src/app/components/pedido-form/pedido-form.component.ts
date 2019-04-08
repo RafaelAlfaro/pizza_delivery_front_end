@@ -11,18 +11,18 @@ import { PedidosService } from '../../services/pedidos.service';
 export class PedidoFormComponent implements OnInit {
   @HostBinding('class') classes = 'row';
   public pedido: Pedido = {
-    id:'0',
-    customerId: 0,
-    customerName:'Pedro',
-    lines: [],
-    status:1,
-    userId:1
+    orderId:'0',
+    orderStatus: 0,
+    statusDescription:'Pedro',
+    items: [],
+    creationDateTime:1,
+    restaurantCode:1
   }
   constructor(private pedidoService: PedidosService, private router:Router, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {
     const params= this.activatedRoute.snapshot.params;
-    this.pedidoService.getPedido(params.id)
+    this.pedidoService.getPedido(params.orderId)
     .subscribe(
       res =>{
         console.log(res);
@@ -33,18 +33,18 @@ export class PedidoFormComponent implements OnInit {
     )
   }
   cambiarEstado(){
-    if (this.pedido.status==1){
-      this.pedido.status=2;
+    if (this.pedido.orderStatus==1){
+      this.pedido.orderStatus=2;
     }
     else{
-      this.pedido.status=1;
+      this.pedido.orderStatus=1;
     }
   }
   updatePedido(){
    // this.pedido.status=2;
   //   console.log(this.pedido);
 
-     this.pedidoService.updatePedido(this.pedido.id,this.pedido)
+     this.pedidoService.updatePedido(this.pedido.orderId,this.pedido)
       .subscribe(
         res=>{
           console.log(res);

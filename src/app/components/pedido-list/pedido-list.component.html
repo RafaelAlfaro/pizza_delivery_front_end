@@ -1,27 +1,38 @@
-<h2>
-    Lista de pedidos
-</h2>
-
 <div class="col-md-4" *ngFor="let pedido of pedidos">
 
-  <div class="card text-center">
+  <div *ngIf="pedido.orderStatus===0" class="pedidos ? visible : hidden" >
+      
     <div class="card-header align-items-center">
-      {{pedido.id}}
+      {{pedido.orderId}}
     </div>
     <div class="card-body">
      
-      <p> Cliente:
-          {{pedido.customerName}}
+      <p> Status:
+          {{pedido.statusDescription}}
       </p>
-      <p *ngIf="pedido.status===1" class='bg-primary text-white'>
+      <p *ngIf="pedido.orderStatus===0" class='bg-primary text-white'>
         No entregado
       </p>
-      <p *ngIf="pedido.status===2" class='bg-success text-white' >
+      <p *ngIf="pedido.orderStatus===1" class='bg-success text-white' >
         Entregado
       </p>
-      <a [routerLink]="['/pedidos/edit', pedido.id]" class="btn btn-info btn-block">
+      <a [routerLink]="['/pedidos/edit', pedido.orderId]" class="btn btn-info btn-block">
         Edit Pedido
       </a>   
+   
+  </div>
+  </div>
+  <div *ngIf="pedido.orderStatus===1" class="pedidosEntregados ? visible : hidden" >
+    <div class="card-header align-items-center">
+      {{pedido.orderId}}
+    </div>
+    <div class="card-body">     
+      <p> Status:
+          {{pedido.statusDescription}}
+      </p>   
+      <p *ngIf="pedido.orderStatus===1" class='bg-success text-white' >
+        Entregado
+      </p>    
     </div>
   </div>
 </div>
