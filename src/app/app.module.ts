@@ -8,12 +8,14 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { PedidoFormComponent } from './components/pedido-form/pedido-form.component';
 import { PedidoListComponent } from './components/pedido-list/pedido-list.component';
 import { PedidosService } from './services/pedidos.service';
+import { PedidoEntregadoListComponent } from './components/pedido-entregado-list/pedido-entregado-list.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
     PedidoFormComponent,
-    PedidoListComponent
+    PedidoListComponent,
+    PedidoEntregadoListComponent
   ],
   imports: [
     BrowserModule,

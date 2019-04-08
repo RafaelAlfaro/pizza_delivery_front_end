@@ -1,41 +1,23 @@
-<div class="col-md-4" *ngFor="let pedido of pedidos">
-
-  <div *ngIf="pedido.orderStatus===0" class="pedidos ? visible : hidden">
-
-    <div class="card-header align-items-center">
+<div class="col-md-3  m-2 card" *ngFor="let pedido of pedidos">
+  <div *ngIf="pedido.orderStatus===0" class="test-center card-body">
+    <div class="card-hear text-while d-flex justify-content-between align-items-center">
+      Code:
       {{pedido.orderId}}
     </div>
-    <div class="card-body">
+    <p> Restaurant Code:
+      {{pedido.restaurantCode}}
+    </p>
+    <div class='bg-secondary'>
       <p> Status:
         {{pedido.statusDescription}}
-      </p>
-      <p> Restaurant Code:
-        {{pedido.restaurantCode}}
-      </p>
-      <p *ngIf="pedido.orderStatus===0" class='bg-primary text-white'>
-        No entregado
-      </p>
-      <p *ngIf="pedido.orderStatus===1" class='bg-success text-white'>
-        Entregado
-      </p>
-      <a [routerLink]="['/pedidos/edit', pedido.orderId]" class="btn btn-info btn-block">
+      </p>    
+     <i class="glyphicon  glyphicon-pizza-slice"></i>     
+     <div class="text-center">
+        <img src="/assets/Bodegones_360x360_PPP.jpg" class="rounded img-thumbnail" alt="PIZZA">
+      </div>
+      <a [routerLink]="['/pedidos/edit', pedido.orderId]" class="btn btn-info btn-block glyphicon glyphicon-edit">
         Editar Pedido
       </a>
-
     </div>
-  </div>
-  <div *ngIf="pedido.orderStatus===1" class="pedidosEntregados ? visible : hidden">
-    <div class="card-header align-items-center">
-      {{pedido.orderId}}
-    </div>
-    <div class="card-body">
-      <p> Status:
-        {{pedido.statusDescription}}
-      </p>
-
-      <p *ngIf="pedido.orderStatus===1" class='bg-success text-white'>
-        Entregado
-      </p>
-    </div>
-  </div>
+  </div> 
 </div>

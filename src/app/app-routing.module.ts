@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PedidoListComponent } from './components/pedido-list/pedido-list.component';
 import { PedidoFormComponent } from './components/pedido-form/pedido-form.component';
+import { PedidoEntregadoListComponent } from './components/pedido-entregado-list/pedido-entregado-list.component';
 const routes: Routes = [
   {
     path: '',
@@ -18,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'pedidosEntregados',
-    component: PedidoListComponent
+    component: PedidoEntregadoListComponent
   },
 ];
 
