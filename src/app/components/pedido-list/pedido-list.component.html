@@ -1,38 +1,41 @@
 <div class="col-md-4" *ngFor="let pedido of pedidos">
 
-  <div *ngIf="pedido.orderStatus===0" class="pedidos ? visible : hidden" >
-      
+  <div *ngIf="pedido.orderStatus===0" class="pedidos ? visible : hidden">
+
     <div class="card-header align-items-center">
       {{pedido.orderId}}
     </div>
     <div class="card-body">
-     
       <p> Status:
-          {{pedido.statusDescription}}
+        {{pedido.statusDescription}}
+      </p>
+      <p> Restaurant Code:
+        {{pedido.restaurantCode}}
       </p>
       <p *ngIf="pedido.orderStatus===0" class='bg-primary text-white'>
         No entregado
       </p>
-      <p *ngIf="pedido.orderStatus===1" class='bg-success text-white' >
+      <p *ngIf="pedido.orderStatus===1" class='bg-success text-white'>
         Entregado
       </p>
       <a [routerLink]="['/pedidos/edit', pedido.orderId]" class="btn btn-info btn-block">
-        Edit Pedido
-      </a>   
-   
+        Editar Pedido
+      </a>
+
+    </div>
   </div>
-  </div>
-  <div *ngIf="pedido.orderStatus===1" class="pedidosEntregados ? visible : hidden" >
+  <div *ngIf="pedido.orderStatus===1" class="pedidosEntregados ? visible : hidden">
     <div class="card-header align-items-center">
       {{pedido.orderId}}
     </div>
-    <div class="card-body">     
+    <div class="card-body">
       <p> Status:
-          {{pedido.statusDescription}}
-      </p>   
-      <p *ngIf="pedido.orderStatus===1" class='bg-success text-white' >
+        {{pedido.statusDescription}}
+      </p>
+
+      <p *ngIf="pedido.orderStatus===1" class='bg-success text-white'>
         Entregado
-      </p>    
+      </p>
     </div>
   </div>
 </div>

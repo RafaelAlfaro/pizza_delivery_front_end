@@ -7,12 +7,16 @@ export interface Pedido {
     restaurantCode?: any;
     restaurantName?: String;
 }
-export interface items{
+export interface items {
+    orderItemId: String;
     itemCode: String;
-    description:Producto;
+    description: String;
     quantity: String;
+    orderId: String;
+    order: Producto;
+
 }
-export interface Producto{
+export interface Producto {
     id: number;
     name: String;
     price: number;

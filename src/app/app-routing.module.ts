@@ -4,22 +4,22 @@ import { PedidoListComponent } from './components/pedido-list/pedido-list.compon
 import { PedidoFormComponent } from './components/pedido-form/pedido-form.component';
 const routes: Routes = [
   {
-    path:'',
-    redirectTo:'/pedidos',
-    pathMatch:'full'
+    path: '',
+    redirectTo: '/pedidos',
+    pathMatch: 'full'
   },
   {
-    path:'pedidos',
+    path: 'pedidos',
     component: PedidoListComponent
   },
   {
-    path:'pedidos/edit/:id',
+    path: 'pedidos/edit/:orderId',
     component: PedidoFormComponent
   },
   {
-    path:'pedidosEntregados',
+    path: 'pedidosEntregados',
     component: PedidoListComponent
-  },   
+  },
 ];
 
 @NgModule({
