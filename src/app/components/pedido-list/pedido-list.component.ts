@@ -1,5 +1,5 @@
-import { Component, OnInit,HostBinding } from '@angular/core';
-import { PedidosService} from '../../services/pedidos.service';
+import { Component, OnInit, HostBinding, Input } from '@angular/core';
+import { PedidosService } from '../../services/pedidos.service';
 import { Pedido } from 'src/app/models/pedido';
 
 @Component({
@@ -9,19 +9,25 @@ import { Pedido } from 'src/app/models/pedido';
 })
 export class PedidoListComponent implements OnInit {
   @HostBinding('class') classes = 'row';
-  pedidos: any=[];
+  pedidos: any = [];
+
+  @Input()
+  title: string;
+
+  @Input()
+  orderStatus: string;
+
   constructor(private pedidosService: PedidosService) { }
 
-  ngOnInit() {    
+  ngOnInit() {
     this.getPedidos();
   }
-  getPedidos(){
+  getPedidos() {
     this.pedidosService.getPedidos().subscribe(
-      res => {
-        this.pedidos = res;
+      (res: any[]) => {
+        this.pedidos = res.filter((element) => element.orderStatus === this.orderStatus);
       },
-      err=> console.error(err)
+      err => console.error(err)
     )
   }
- 
 }
