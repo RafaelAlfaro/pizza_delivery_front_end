@@ -13,13 +13,23 @@
         {{pedido.restaurantCode}}
       </p>
       <p> Estado: </p>
-      <p *ngIf="pedido.orderStatus==='Created'" class='bg-primary text-white'>
+      <p *ngIf="pedido.orderStatus==='Created'" class='bg-warning text-white text-center'>
         No entregado
       </p>
-      <p *ngIf="pedido.orderStatus==='Delivered'" class='bg-success text-white'>
+      <p *ngIf="pedido.orderStatus==='Delivered'" class='bg-success text-white text-center'>
         Entregado
-      </p>
-      <a [routerLink]="['/pedidos/edit', pedido.orderId]" class="btn btn-info btn-block">
+      </p>    
+   
+
+      <div  *ngIf="pedido.restaurantCode==='SUC-03'" class="text-center">
+        <img src="\assets\imagenes\pizza3.jpg" class="rounded img-thumbnail" alt="PIZZA">
+       
+      </div>
+      <div  *ngIf="pedido.restaurantCode!=='SUC-03'" class="text-center">
+        <img src="\assets\imagenes\pizza4.jpg" class="rounded img-thumbnail" alt="PIZZA">
+       
+      </div>
+      <a [routerLink]="['/pedidos/edit', pedido.orderId]" class="btn btn-info btn-block glyphicon glyphicon-edit">
         {{ pedido.orderStatus === 'Created' ? 'Atender Pedido' : 'Ver Pedido'}}
       </a>
 
