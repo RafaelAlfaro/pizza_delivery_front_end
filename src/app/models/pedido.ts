@@ -21,3 +21,11 @@ export interface Producto {
     name: String;
     price: number;
 }
+export interface OrderService {
+    id?: String,
+    orderId: string;
+    status: string;
+    notes?: String;
+    serverStart?: Date;
+    serverEnd?: Date;
+}

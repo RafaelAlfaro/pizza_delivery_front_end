@@ -39,7 +39,12 @@ export class PedidoFormComponent implements OnInit {
     this.pedidoService.updatePedido(this.pedido.orderId, this.pedido)
       .subscribe(
         res => {
-          this.router.navigate(['/pedidos']);
+          this.pedidoService.updateOrderService(this.pedido.orderId).subscribe(
+            res => {
+              this.router.navigate(['/pedidos']);
+            },
+            err => console.error(err)
+          );
         },
         err => console.error(err)
       )

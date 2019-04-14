@@ -1,4 +1,31 @@
-<app-pedido-list
-    orderStatus="Delivered"
-    title="Pedidos Entregados">
-  </app-pedido-list>
+<div class="col-md-12">
+  <h1>Pedidos Entregados</h1>
+</div>
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-body">
+      <div class="table-wrapper">
+        <table class="table-small">
+          <thead>
+            <th>#</th>
+            <th>Order</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Server time</th>
+            <th>Estado</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orders; let i = index">
+              <td>{{i + 1}}</td>
+              <td>{{order.orderId}}</td>
+              <td>{{order.serverStart}}</td>
+              <td>{{order.serverEnd}}</td>
+              <td>{{formatTimeService(order.serverStart, order.serverEnd)}}</td>
+              <td>{{order.status === 1 ? "En Atencion" : "Terminado"}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
